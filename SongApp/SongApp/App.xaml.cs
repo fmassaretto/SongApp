@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SongApp.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,8 @@ namespace SongApp
         {
             InitializeComponent();
 
-            MainPage = new SongApp.MainPage();
+            //MainPage = new SongApp.Views.AddSongPage();
+            MainPage = new NavigationPage(new AddSongPage());
         }
 
         protected override void OnStart()
