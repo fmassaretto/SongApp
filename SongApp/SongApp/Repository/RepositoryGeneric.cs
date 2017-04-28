@@ -59,7 +59,7 @@ namespace SongApp.Repository
         {
             try
             {
-                await _connection.InsertAsync(obj);
+                await RepositoryGeneric<T>.Instance.Post(obj);
                 return obj;
             }
             catch (Exception exception)

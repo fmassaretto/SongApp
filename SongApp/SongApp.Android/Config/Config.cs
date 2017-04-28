@@ -1,11 +1,10 @@
-﻿using SongApp.Interface;
-using SongApp.Repository;
 using SQLite.Net.Interop;
+using SongApp.Droid.Config;
 using SQLite.Net.Platform.XamarinAndroid;
-using System;
+using SongApp.Interface;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Config))]
-namespace SongApp.Repository
+namespace SongApp.Droid.Config
 {
     public class Config : IConfig
     {
@@ -29,7 +28,7 @@ namespace SongApp.Repository
             {
                 if (_plataforma == null)
                 {
-                    _plataforma = new SQLitePlatformAndroidN();
+                    _plataforma = new SQLitePlatformAndroid();
                 }
                 return _plataforma;
             }
