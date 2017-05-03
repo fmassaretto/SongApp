@@ -14,8 +14,9 @@ namespace SongApp
         {
             InitializeComponent();
 
-            MainPage = new SongApp.Views.ShowAllSongPage();
-            //MainPage = new NavigationPage(new AddSongPage());
+            //MainPage = new SongApp.Views.ShowAllSongPage();
+            //MainPage = new SongApp.MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using SongApp.Database;
 
 namespace SongApp.Droid
 {
@@ -20,6 +21,9 @@ namespace SongApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            SongsDatabase Database = new SongsDatabase();
+            Database.CreateTables();
             LoadApplication(new App());
         }
     }

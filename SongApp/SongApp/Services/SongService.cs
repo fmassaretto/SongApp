@@ -2,17 +2,19 @@
 using SongApp.Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace SongApp.Services
 {
-    public class SongService : RepositoryGeneric<Song>
+    public class SongService
     {
+        private readonly RepositoryGeneric<Song> _repository; 
         public async Task<List<Song>> GetAll()
         {
             try
             {
-                return await base.GetAll();
+                return await RepositoryGeneric<Song>.Instance.GetAll();
             }
             catch (Exception exception)
             {
@@ -24,7 +26,7 @@ namespace SongApp.Services
         {
             try
             {
-                await base.Post(songs);
+                await RepositoryGeneric<Song>.Instance.Post(songs);
                 return songs;
             }
             catch (Exception)

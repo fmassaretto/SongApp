@@ -2,6 +2,7 @@
 using SQLite.Net.Async;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace SongApp.Repository
@@ -59,7 +60,7 @@ namespace SongApp.Repository
         {
             try
             {
-                await RepositoryGeneric<T>.Instance.Post(obj);
+                await _connection.InsertAsync(obj);
                 return obj;
             }
             catch (Exception exception)

@@ -20,8 +20,6 @@ namespace SongApp.ViewModels
 
         readonly SongService _songService = new SongService();
 
-        private ICommand _addSongCommand;
-
         private string _album;
 
         private string _artist;
@@ -51,24 +49,18 @@ namespace SongApp.ViewModels
 
         public AddNewSongViewModel() : base("Adding Song")
         {
+
         }
 
-        public ICommand AddSongCommand
-        {
-            get
-            {
-                return _addSongCommand ?? new Command(async () => await AddSong());
-            }
-        }
+        //public ICommand AddSongCommand
+        //{
+        //    get
+        //    {
+        //        return AddSongCommand ?? new Command(async () => await AddSong());
+        //    }
+        //}
 
-        public ObservableCollection<Song> SongsObservable
-        {
-            set
-            {
-                _songsObservable = value;
-                OnPropertyChanged();
-            }
-        }
+
 
         public string Album
         {
@@ -160,31 +152,58 @@ namespace SongApp.ViewModels
             }
         }
 
-        private async Task AddSong()
+        public async Task<Song> AddSong()
         {
-            try
+            var song = new Song()
             {
-                var song = new Song {
-                    Name = _name,
-                    Artist = _artist,
-                    Album = _album,
-                    Composer = _composer,
-                    Genre = _genre,
-                    TotalTime = _totalTime,
-                    TrackNumber = _trackNumber,
-                    Year = _year,
-                    BitRate = _bitRate
+                Name = Name,
+                Artist = Artist,
+                Album = Album,
+                Composer = Composer,
+                Genre = Genre,
+                TotalTime = TotalTime,
+                TrackNumber = TrackNumber,
+                Year = Year,
+                BitRate = BitRate
             };
-    
-            await _songService.Post(song);
 
-            }
-            catch (Exception ex)
+            if (song != null)
             {
-
-                throw new Exception(ex.Message);
+                var retorno = await _songService.Post(song);
+                return retorno;
             }
+            return song;
         }
+
+        private ICommand _addSongCommand;
+        public ICommand AddSongCommand {
+            get { return _addSongCommand ?? (_addSongCommand = new Command(async () => await AddSong())); }
+        }
+                                           //private async Task AddSong()
+                                           //{
+                                           //    try
+                                           //    {
+                                           //        var song = new Song {
+                                           //            Name = _name,
+                                           //            Artist = _artist,
+                                           //            Album = _album,
+                                           //            Composer = _composer,
+                                           //            Genre = _genre,
+                                           //            TotalTime = _totalTime,
+                                           //            TrackNumber = _trackNumber,
+                                           //            Year = _year,
+                                           //            BitRate = _bitRate
+                                           //    };
+
+        //    await _songService.Post(song);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
     }
 }
