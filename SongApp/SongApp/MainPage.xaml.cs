@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SongApp.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,17 @@ namespace SongApp
         public MainPage()
         {
             InitializeComponent();
+            
+        }
+
+        public void OnShowAllSongsClicked(object sender, EventArgs e)
+        {
+            Navigation?.PushAsync(new ShowAllSongPage());
+        }
+
+        public void OnAddSongClicked(object sender, EventArgs e)
+        {
+            Navigation?.PushAsync(new AddSongPage());
         }
     }
 }
