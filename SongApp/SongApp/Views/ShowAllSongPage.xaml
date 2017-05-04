@@ -2,13 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SongApp.Views.ShowAllSongPage"
-             Title="{Binding Title}">
-    <ListView x:Name="SongsListView"  ItemsSource="{Binding SongsLstView}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Name}" Detail="{Binding Artist}"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    <Label Text="asdasdasdasdasd"/>
+             Title="{Binding Title}" BackgroundColor="#000">
+    <ContentPage.Content>
+        <ListView  x:Name="listView" ItemsSource="{Binding SongsLstView}" ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Vertical">
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="Artist: " FontSize="Medium" 
+                                           TextColor="#f35e20"/>
+                                    <Label Grid.Column="1" Text="{Binding Artist}" FontSize="Medium"
+                                            TextColor="#f35e20"/>
+                                    <Label Grid.Column="2" Text="Album: " FontSize="Medium" 
+                                           TextColor="#503026"/>
+                                    <Label Grid.Column="3" Text="{Binding Album}" FontSize="Medium"
+                                            TextColor="#503026" />
+
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
 </ContentPage>

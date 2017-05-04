@@ -1,9 +1,5 @@
-﻿using SongApp.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SongApp.Models;
+using SongApp.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,7 +13,14 @@ namespace SongApp.Views
         {
             InitializeComponent();
             BindingContext = new ShowAllSongsViewModel();
+        }
 
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem;
+
+            var song = (Song)item;
+            Navigation.PushAsync(new DetailsSongPage(song));
         }
     }
 }
