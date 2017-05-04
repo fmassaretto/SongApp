@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/SongApp/SongApp.Android/SongApp.Android.csproj.bak

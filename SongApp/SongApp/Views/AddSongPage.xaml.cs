@@ -16,7 +16,7 @@ namespace SongApp.Views
         public AddSongPage()
         {
             InitializeComponent();
-            BindingContext = new AddNewSongViewModel();
+            BindingContext = new AddNewSongViewModel(this.Navigation);          
         }
     }
 }

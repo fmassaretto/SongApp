@@ -1,4 +1,6 @@
-﻿using SongApp.Models;
+﻿using Android.Content;
+using Android.Widget;
+using SongApp.Models;
 using SongApp.Services;
 using SongApp.ViewModels.Base;
 using System;
@@ -16,9 +18,8 @@ namespace SongApp.ViewModels
 {
     public class AddNewSongViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        public Song songModel;
-
         readonly SongService _songService = new SongService();
+        private INavigation _navigation;
 
         private string _album;
 
@@ -38,8 +39,6 @@ namespace SongApp.ViewModels
 
         private int _year;
 
-        ObservableCollection<Song> _songsObservable;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -47,20 +46,10 @@ namespace SongApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public AddNewSongViewModel() : base("Adding Song")
+        public AddNewSongViewModel(INavigation navigation) : base("Adding Song")
         {
-
+            _navigation = navigation;
         }
-
-        //public ICommand AddSongCommand
-        //{
-        //    get
-        //    {
-        //        return AddSongCommand ?? new Command(async () => await AddSong());
-        //    }
-        //}
-
-
 
         public string Album
         {
@@ -170,7 +159,10 @@ namespace SongApp.ViewModels
             if (song != null)
             {
                 var retorno = await _songService.Post(song);
-                return retorno;
+                if (retorno != null)
+                {
+                    await _navigation.PopAsync();
+                }
             }
             return song;
         }
@@ -179,31 +171,5 @@ namespace SongApp.ViewModels
         public ICommand AddSongCommand {
             get { return _addSongCommand ?? (_addSongCommand = new Command(async () => await AddSong())); }
         }
-                                           //private async Task AddSong()
-                                           //{
-                                           //    try
-                                           //    {
-                                           //        var song = new Song {
-                                           //            Name = _name,
-                                           //            Artist = _artist,
-                                           //            Album = _album,
-                                           //            Composer = _composer,
-                                           //            Genre = _genre,
-                                           //            TotalTime = _totalTime,
-                                           //            TrackNumber = _trackNumber,
-                                           //            Year = _year,
-                                           //            BitRate = _bitRate
-                                           //    };
-
-        //    await _songService.Post(song);
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
-
     }
 }
