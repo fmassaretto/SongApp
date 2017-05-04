@@ -11,10 +11,14 @@ namespace SongApp.ViewModels
     {
         readonly SongService _songService = new SongService();
 
-        ObservableCollection<Song> _songsLstView;
-        public ObservableCollection<Song> SongsLstView
+        private Task<List<Song>> _songsLstView;
+        public Task<List<Song>> SongsLstView
         {
-            get { return _songsLstView; }
+            get {
+               var GetSongs = _songService.GetAll();
+                var teste = GetSongs;
+                return GetSongs;
+                }
             //set
             //{
             //    _songs = value;
@@ -22,10 +26,10 @@ namespace SongApp.ViewModels
             //}
         }
 
-        private List<Song> RefreshSongs(){
-            List<Song> GetSongs = _songService.GetAll();
+        private async Task<ObservableCollection<Song>> RefreshSongs(){
+            List<Song> GetSongs = await _songService.GetAll();
             var teste = GetSongs;
-            return GetSongs;
+            return new ObservableCollection<Song>(GetSongs);
         }
         public ShowAllSongsViewModel() : base("Show All Songs")
         {

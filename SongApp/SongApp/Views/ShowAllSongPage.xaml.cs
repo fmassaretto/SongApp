@@ -17,7 +17,7 @@ namespace SongApp.Views
         {
             InitializeComponent();
             BindingContext = new ShowAllSongsViewModel();
-            SongsListView.ItemsSource = 
+
         }
     }
 }
