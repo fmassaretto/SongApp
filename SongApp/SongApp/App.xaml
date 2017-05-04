@@ -9,10 +9,11 @@
             <Style x:Key="buttonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="#000" />
                 <Setter Property="BorderColor" Value="#990099" />
                 <Setter Property="BorderRadius" Value="5" />
                 <Setter Property="BorderWidth" Value="5" />
-                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="WidthRequest" Value="300" />
                 <Setter Property="TextColor" Value="Teal" />
             </Style>
         </ResourceDictionary>
