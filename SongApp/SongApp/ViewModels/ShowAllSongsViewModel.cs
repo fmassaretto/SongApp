@@ -1,50 +1,63 @@
 ﻿using SongApp.Models;
 using SongApp.Services;
 using SongApp.ViewModels.Base;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace SongApp.ViewModels
 {
-    public class ShowAllSongsViewModel : ViewModelBase
+    public class ShowAllSongsViewModel : ViewModelBase, INotifyPropertyChanged
     {
         readonly SongService _songService = new SongService();
 
-        private Task<List<Song>> _songsLstView;
-        public Task<List<Song>> SongsLstView
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _artist;
+        private string _album;
+
+        public string Album
         {
-            get {
-               var GetSongs = _songService.GetAll();
-                var teste = GetSongs;
-                return GetSongs;
-                }
-            //set
-            //{
-            //    _songs = value;
-            //    OnPropertyChanged();
-            //}
+            get { return _album; }
+            set
+            {
+                _album = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Album)));
+            }
         }
 
-        private async Task<ObservableCollection<Song>> RefreshSongs(){
-            List<Song> GetSongs = await _songService.GetAll();
-            var teste = GetSongs;
-            return new ObservableCollection<Song>(GetSongs);
+        public string Artist
+        {
+            get { return _artist; }
+            set
+            {
+                _artist = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Artist)));
+            }
+        }
+
+        private ObservableCollection<Song> _songsLstView;
+        public ObservableCollection<Song> SongsLstView
+        {
+            get {
+                return _songsLstView;
+                }
+            set
+            {
+                _songsLstView = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SongsLstView)));
+            }
+        }
+
+        private async Task RefreshSongs(){
+            var GetSongs = await _songService.GetAll();
+            SongsLstView = new ObservableCollection<Song>(GetSongs);
         }
         public ShowAllSongsViewModel() : base("Show All Songs")
         {
-            RefreshSongs();
-            //_songs.Add(new Song {
-            //    Name = "sdfs",
-            //    Artist = "sdsd",
-            //    Album = "sdsd",
-            //    Composer = "sdsd",
-            //    Genre = "sdsd",
-            //    TotalTime = 1,
-            //    TrackNumber = 2,
-            //    Year = 3,
-            //    BitRate = 4
-            //});
+            Task.Run(async () => await RefreshSongs());
         }
+
+
     }
 }

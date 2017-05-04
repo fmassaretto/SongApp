@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SongApp"
-             x:Class="SongApp.MainPage">
+             x:Class="SongApp.MainPage" BackgroundColor="#000">
 
     <Grid Padding="0" RowSpacing="8">
         <Grid.RowDefinitions>
@@ -13,9 +13,9 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Button Text="Show All Songs"
-                Grid.Row="0" Grid.Column="0" Clicked="OnShowAllSongsClicked"></Button>
+                Grid.Row="0" Grid.Column="0" Clicked="OnShowAllSongsClicked" Style="{StaticResource buttonStyle}"></Button>
         <Button Text="Add New Song"
-                Grid.Row="1" Grid.Column="0" Clicked="OnAddSongClicked"></Button>
+                Grid.Row="1" Grid.Column="0" Clicked="OnAddSongClicked" Style="{StaticResource buttonStyle}"></Button>
     </Grid>
 
 </ContentPage>

@@ -49,9 +49,13 @@
     <Compile Include="Services\SongService.cs" />
     <Compile Include="ViewModels\AddNewSongViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModels\DetailsSongViewModel.cs" />
     <Compile Include="ViewModels\ShowAllSongsViewModel.cs" />
     <Compile Include="Views\AddSongPage.xaml.cs">
       <DependentUpon>AddSongPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DetailsSongPage.xaml.cs">
+      <DependentUpon>DetailsSongPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowAllSongPage.xaml.cs">
       <DependentUpon>ShowAllSongPage.xaml</DependentUpon>
@@ -99,7 +103,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DetailsSongPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AddSongPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

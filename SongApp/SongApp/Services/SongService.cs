@@ -36,17 +36,5 @@ namespace SongApp.Services
             }
         }
 
-        //public async Task<List<Song>> PostAll(List<Song> songs)
-        //{
-        //    try
-        //    {
-        //        await base.PostAll(songs);
-        //        return songs;
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        throw new Exception(exception.Message);
-        //    }
-        //}
     }
 }

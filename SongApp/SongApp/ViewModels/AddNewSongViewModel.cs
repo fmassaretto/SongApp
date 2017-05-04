@@ -1,15 +1,9 @@
-﻿using Android.Content;
-using Android.Widget;
-using SongApp.Models;
+﻿using SongApp.Models;
 using SongApp.Services;
 using SongApp.ViewModels.Base;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
