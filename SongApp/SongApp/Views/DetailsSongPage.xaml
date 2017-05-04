@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SongApp.Views.DetailsSongPage" Title="{Binding Title}" BackgroundColor="#000">
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+
+        <Label Grid.Column="0" Grid.Row="0" Text="Name: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+
+
+        <Label Grid.Column="0" Grid.Row="1" Text="Artist: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Artist}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+
+        <Label Grid.Column="0" Grid.Row="2" Text="Composer: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="2" Text="{Binding Composer}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+
+
+        <Label Grid.Column="0" Grid.Row="3" Text="Album: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="3" Text="{Binding Album}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+
+        <Label Grid.Column="0" Grid.Row="4" Text="Genre: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="4" Text="{Binding Genre}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+
+
+        <Label Grid.Column="0" Grid.Row="5" Text="Total Time:: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="5" Text="{Binding TotalTime}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+
+        <Label Grid.Column="0" Grid.Row="6" Text="Track Number: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="6" Text="{Binding TrackNumber}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+
+        <Label Grid.Column="0" Grid.Row="7" Text="Year: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="7" Text="{Binding Year}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+
+
+        <Label Grid.Column="0" Grid.Row="8" Text="BitRate: " TextColor="#FFCCE5" FontSize="Medium"/>
+        <Label Grid.Column="1" Grid.Row="8" Text="{Binding BitRate}" TextColor="#FFCCE5" FontSize="Medium"/>
+
+        </Grid>
+</ContentPage>
