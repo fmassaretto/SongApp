@@ -17,5 +17,15 @@
                 <Setter Property="TextColor" Value="Teal" />
             </Style>
         </ResourceDictionary>
+        
+        <ResourceDictionary>
+            <Style x:Key="deleteButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="BackgroundColor" Value="red" />
+            <Setter Property="WidthRequest" Value="300" />
+            <Setter Property="TextColor" Value="Teal" />
+        </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
