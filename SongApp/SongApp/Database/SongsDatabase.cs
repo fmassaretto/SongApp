@@ -20,7 +20,7 @@ namespace SongApp.Database
                 {
                     var config = DependencyService.Get<IConfig>();
                     //var platform = new SQLitePlatformAndroidN();
-                    var cwLock = new SQLiteConnectionWithLock(config.Plataforma, new SQLiteConnectionString(Path.Combine(config.Diretorio, "PastelApp.db3"), false));
+                    var cwLock = new SQLiteConnectionWithLock(config.Plataforma, new SQLiteConnectionString(Path.Combine(config.Diretorio, "SongApp.db3"), false));
                     _connection = new SQLiteAsyncConnection(() => cwLock);
                     LazyInitializer.EnsureInitialized(ref _connection);
                 }

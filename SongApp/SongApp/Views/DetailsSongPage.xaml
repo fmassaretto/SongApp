@@ -60,4 +60,7 @@
         <Label Grid.Column="1" Grid.Row="8" Text="{Binding BitRate}" TextColor="#FFCCE5" FontSize="Medium"/>
 
         </Grid>
+    <StackLayout>
+        <Button Text="Show All Songs"></Button>
+    </StackLayout>
 </ContentPage>

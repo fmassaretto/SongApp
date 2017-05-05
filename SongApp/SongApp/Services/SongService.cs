@@ -31,7 +31,19 @@ namespace SongApp.Services
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
 
+        public async Task<Song> Delete(Song songs)
+        {
+            try
+            {
+                await RepositoryGeneric<Song>.Instance.Delete(songs);
+                return songs;
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }
